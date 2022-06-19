@@ -1,0 +1,24 @@
+{
+  "name": "henrik9999/string-similarity",
+  "description": "Finds degree of similarity between two strings, based on Dice's Coefficient, which is mostly better than Levenshtein distance.",
+  "keywords": [
+    "string-similarity",
+    "string-comparison",
+    "dice-coefficient",
+    "strings"
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Henrik9999\\StringSimilarity\\": "src"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9"
+  },
+  "require": {
+    "php": "^8.0",
+    "ext-mbstring": "*"
+  }
+}
