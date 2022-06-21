@@ -14,11 +14,14 @@
       "Henrik9999\\StringSimilarity\\": "src"
     }
   },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
   "require-dev": {
     "phpunit/phpunit": "^9"
   },
   "require": {
-    "php": "^8.0",
+    "php": "^7.4|^8.0",
     "ext-mbstring": "*"
   }
 }
