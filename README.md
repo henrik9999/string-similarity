@@ -134,5 +134,8 @@ array(3) {
 
 ## Release Notes
 
+### 1.0.1
+- Made some perfomance improvements
+
 ### 1.0.0
 - Initial Release
