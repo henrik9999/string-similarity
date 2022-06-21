@@ -16,11 +16,14 @@ class StringSimilarity
         }
 
         if ($first === $second) return 1;
-        if (mb_strlen($first) < 2 || mb_strlen($second) < 2) return 0;
+
+        $firstLength = mb_strlen($first);
+        $secondLength =  mb_strlen($second);
+        if ($firstLength < 2 || $secondLength < 2) return 0;
 
 
         $firstBigrams = [];
-        for ($i = 0; $i < strlen($first) - 1; $i++) {
+        for ($i = 0; $i < $firstLength - 1; $i++) {
             $bigram = mb_substr($first, $i, 2);
             $count = isset($firstBigrams[$bigram]) ? ++$firstBigrams[$bigram] : 1;
 
@@ -28,9 +31,9 @@ class StringSimilarity
         }
 
         $intersectionSize = 0;
-        for ($i = 0; $i < strlen($second) - 1; $i++) {
+        for ($i = 0; $i < $secondLength - 1; $i++) {
             $bigram = mb_substr($second, $i, 2);
-            $count = isset($firstBigrams[$bigram]) ? $firstBigrams[$bigram] : 0;
+            $count = $firstBigrams[$bigram] ?? 0;
 
             if ($count > 0) {
                 $firstBigrams[$bigram] = $count - 1;
@@ -38,7 +41,7 @@ class StringSimilarity
             }
         }
 
-        return (2.0 * $intersectionSize) / (mb_strlen($first) + mb_strlen($second) - 2);
+        return (2.0 * $intersectionSize) / ($firstLength + $secondLength - 2);
     }
 
     public function findBestMatch(string $mainString, array $targetStrings, bool $casesensitive = true): array
